@@ -53,6 +53,10 @@ if (isset($_SESSION['user_id'])) {
             background: #28a745;
             color: white;
         }
+
+        .alert p {
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -127,15 +131,13 @@ if (isset($_SESSION['user_id'])) {
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Aadhar Front Image</label>
-                                    <input type="file" class="form-control mb-3" name="aadhar_front" accept="image/*"
-                                        required>
+                                    <input type="file" class="form-control mb-3" name="aadhar_front" accept="image/*">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Aadhar Back Image</label>
-                                    <input type="file" class="form-control mb-3" name="aadhar_back" accept="image/*"
-                                        required>
+                                    <input type="file" class="form-control mb-3" name="aadhar_back" accept="image/*">
                                 </div>
                             </div>
                         </div>
@@ -165,7 +167,7 @@ if (isset($_SESSION['user_id'])) {
                 <div id="step3" class="step">
                     <h4>Email Verification</h4>
                     <form id="step3-form">
-                        <div class="alert alert-info">
+                        <div class="alert alert-info" id="otp-message">
                             <p>We've sent a 6-digit OTP to your email. Please check your inbox.</p>
                         </div>
 
@@ -174,7 +176,7 @@ if (isset($_SESSION['user_id'])) {
 
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
-                            <button type="submit" class="btn btn-theme">Complete Registration</button>
+                            <button type="submit" class="btn btn-theme" id="submit-btn">Complete Registration</button>
                         </div>
                     </form>
                 </div>
@@ -187,7 +189,7 @@ if (isset($_SESSION['user_id'])) {
     </section>
 
     <script>
-        let formData = {};
+        let registrationData = {};
 
         function nextStep(next) {
             const current = next - 1;
@@ -199,19 +201,38 @@ if (isset($_SESSION['user_id'])) {
                 const password = form.password.value;
                 const confirmPassword = form.confirm_password.value;
 
+                // Basic validation
                 if (password !== confirmPassword) {
                     alert("Passwords don't match!");
-                    return;
+                    return false;
+                }
+
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long!");
+                    return false;
                 }
 
                 // Collect step 1 data
-                formData = {
-                    ...formData,
+                registrationData = {
+                    ...registrationData,
                     full_name: form.full_name.value,
                     email: form.email.value,
                     phone: form.phone.value,
                     password: password,
+                    confirm_password: confirmPassword,
                     partner_type: form.partner_type.value
+                };
+            }
+            else if (next === 3) {
+                const form = document.getElementById('step2-form');
+
+                // Collect step 2 data
+                registrationData = {
+                    ...registrationData,
+                    aadhar_number: form.aadhar_number.value,
+                    experience_years: form.experience_years.value,
+                    hourly_rate: form.hourly_rate.value,
+                    skills: form.skills.value
                 };
             }
 
@@ -240,52 +261,105 @@ if (isset($_SESSION['user_id'])) {
         }
 
         function sendOTP() {
+            const otpMessage = document.getElementById('otp-message');
+            otpMessage.innerHTML = '<p>Sending OTP... Please wait.</p>';
+            otpMessage.className = 'alert alert-info';
+
             // AJAX call to send OTP
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "<?= $BASE_URL ?>ajax/send-otp.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    const response = JSON.parse(this.responseText);
-                    if (!response.success) {
-                        alert(response.message);
+                if (this.readyState === 4) {
+                    console.log("OTP Response:", this.responseText);
+                    try {
+                        const response = JSON.parse(this.responseText);
+                        if (response.success) {
+                            otpMessage.innerHTML = '<p>✓ OTP sent successfully! Check your email. If you don\'t see it, check spam folder.</p>';
+                            otpMessage.className = 'alert alert-success';
+                        } else {
+                            otpMessage.innerHTML = '<p>✗ ' + response.message + '</p>';
+                            otpMessage.className = 'alert alert-danger';
+                        }
+                    } catch (e) {
+                        otpMessage.innerHTML = '<p>✗ Error sending OTP. Please try again.</p>';
+                        otpMessage.className = 'alert alert-danger';
+                        console.error("OTP Error:", e);
                     }
                 }
             };
-            xhr.send(`email=${formData.email}&action=register`);
+
+            xhr.onerror = function () {
+                otpMessage.innerHTML = '<p>✗ Network error. Please check your connection.</p>';
+                otpMessage.className = 'alert alert-danger';
+            };
+
+            xhr.send(`email=${encodeURIComponent(registrationData.email)}&action=register`);
         }
 
         // Handle final submission
         document.getElementById('step3-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            const otp = this.otp.value;
+
+            const otpInput = this.querySelector('input[name="otp"]');
+            const otp = otpInput.value.trim();
+
+            if (!otp || otp.length !== 6) {
+                alert("Please enter a valid 6-digit OTP");
+                otpInput.focus();
+                return;
+            }
+
+            // Add OTP to registration data
+            const finalData = {
+                ...registrationData,
+                otp: otp
+            };
+
+            // Show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+            submitBtn.disabled = true;
+
+            console.log("Sending registration data:", finalData);
 
             // AJAX call to verify OTP and complete registration
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "complete-partner-registration.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
             xhr.onreadystatechange = function () {
                 if (this.readyState === 4) {
-                    const response = JSON.parse(this.responseText);
-                    if (response.success) {
-                        alert("Registration successful! Please wait for admin verification.");
-                        window.location.href = "login.php";
-                    } else {
-                        alert(response.message);
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+
+                    console.log("Registration Response Status:", this.status);
+                    console.log("Registration Response:", this.responseText);
+
+                    try {
+                        const response = JSON.parse(this.responseText);
+                        if (response.success) {
+                            alert(response.message);
+                            window.location.href = <?= $BASE_URL ?>"login.php";
+                        } else {
+                            alert("Error: " + response.message);
+                        }
+                    } catch (e) {
+                        console.error("Parse Error:", e);
+                        console.error("Raw Response:", this.responseText);
+                        alert("Server error. Please check console for details or try again.");
                     }
                 }
             };
 
-            const data = new URLSearchParams({
-                ...formData,
-                otp: otp,
-                aadhar_number: document.querySelector('input[name="aadhar_number"]').value,
-                experience_years: document.querySelector('input[name="experience_years"]').value,
-                hourly_rate: document.querySelector('input[name="hourly_rate"]').value,
-                skills: document.querySelector('textarea[name="skills"]').value
-            });
+            xhr.onerror = function () {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                alert("Network error. Please check your connection.");
+            };
 
-            xhr.send(data.toString());
+            xhr.send(JSON.stringify(finalData));
         });
     </script>
 

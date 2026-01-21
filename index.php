@@ -207,7 +207,8 @@
                                                     Expert chefs for traditional & international cuisines.
                                                 </p>
                                                 <div class="service-footer">
-                                                    <button class="btn btn-outline-primary btn-sm">Book Now</button>
+                                                    <a href="<?= $site ?>book-a-chef/<?= $sub_c['slug_url'] ?>"
+                                                        class="btn btn-outline-primary btn-sm">Book Now</a>
                                                     <span class="price">₹299</span>
                                                 </div>
                                             </div>
@@ -331,7 +332,7 @@
                                         <div
                                             class="mgt-button-wrapper mgt-button-wrapper-align-left mgt-button-wrapper-display-inline mgt-button-top-margin-false mgt-button-right-margin-false mgt-button-round-edges-full wpb_animate_when_almost_visible wpb_fadeInUpBig fadeInUpBig">
                                             <a class="btn hvr-push mgt-button-icon- mgt-button mgt-style-solid mgt-size-normal mgt-align-left mgt-display-inline mgt-text-size-normal mgt-button-icon-separator- mgt-button-icon-position-left text-font-weight-default mgt-text-transform-none"
-                                                href="about-us-restaurant.html">
+                                                href="<?= $site ?>about-us.php">
                                                 About us
                                             </a>
                                         </div>

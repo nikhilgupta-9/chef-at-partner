@@ -227,7 +227,7 @@ function get_cuisines()
     $products = [];
 
     // Prepare the SQL statement with a placeholder (?)
-    $stmt = $conn->prepare("SELECT * FROM `products` WHERE `pro_sub_cate` = 81848 AND status = 1");
+    $stmt = $conn->prepare("SELECT * FROM `products` WHERE `pro_sub_cate` = 74534 AND status = 1 limit 8");
 
     if ($stmt) {
         // Bind the variable to the placeholder ("i" for integer)
@@ -251,7 +251,7 @@ function get_occasions()
     $products = [];
 
     // Prepare the SQL statement with a placeholder (?)
-    $stmt = $conn->prepare("SELECT * FROM `products` WHERE `pro_sub_cate` = 82005 AND status = 1");
+    $stmt = $conn->prepare("SELECT * FROM `products` WHERE `pro_sub_cate` = 50346 AND status = 1");
 
     if ($stmt) {
         // Bind the variable to the placeholder ("i" for integer)

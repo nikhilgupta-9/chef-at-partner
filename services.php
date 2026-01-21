@@ -257,6 +257,4 @@
 
 </body>
 
-<!-- Mirrored from max-themes.net/demos/b-rest/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Dec 2025 06:33:28 GMT -->
-
 </html>

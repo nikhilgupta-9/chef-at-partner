@@ -204,6 +204,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     exit;
 }
-
-
-// ... rest of your existing code for sendOTP() and request handling ...

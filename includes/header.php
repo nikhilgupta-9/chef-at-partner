@@ -24,10 +24,10 @@ $ocassion = get_occasions();
         <div class="d-flex align-items-center justify-content-between gap-5">
             <nav class="cap-nav-menu">
                 <a href="<?= $BASE_URL ?>">Home</a>
-                <a href="about-us.php">About</a>
-                <a href="booking.php">Bookings</a>
-                <a href="services.php">Services</a>
-                <a href="contact-us.php">Contact Us</a>
+                <a href="<?= $BASE_URL ?>about-us.php">About</a>
+                <a href="<?= $BASE_URL ?>booking.php">Bookings</a>
+                <a href="<?= $BASE_URL ?>services.php">Services</a>
+                <a href="<?= $BASE_URL ?>contact-us.php">Contact Us</a>
             </nav>
 
             <!-- SEARCH -->
@@ -38,7 +38,7 @@ $ocassion = get_occasions();
                 </button>
             </div>
             <div class="cap-cta">
-                <a href="signup.php">Sign Up</a>
+                <a href="<?= $BASE_URL ?>signup.php">Sign Up</a>
             </div>
         </div>
 
@@ -55,16 +55,16 @@ $ocassion = get_occasions();
 
             <ul class="mobile-menu">
                 <li><a href="<?= $BASE_URL ?>">Home</a></li>
-                <li><a href="about-us.php">About</a></li>
-                <li><a href="gallery.php">Gallery</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li><a href="contact-us-restaurant.html">Contact Us</a></li>
+                <li><a href="<?= $BASE_URL ?>about-us.php">About</a></li>
+                <li><a href="<?= $BASE_URL ?>gallery.php">Gallery</a></li>
+                <li><a href="<?= $BASE_URL ?>services.php">Services</a></li>
+                <li><a href="<?= $BASE_URL ?>contact.php">Contact Us</a></li>
                 <li class="highlight"><a href="reservation.html">Reservation</a></li>
             </ul>
 
             <!-- LOGIN BUTTON -->
             <div class="mobile-sidebar-login">
-                <a href="login.php" class="mobile-login-btn">
+                <a href="<?= $BASE_URL ?>login.php" class="mobile-login-btn">
                     <i class="fa-solid fa-right-to-bracket"></i> Login
                 </a>
             </div>

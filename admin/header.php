@@ -34,6 +34,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
             </ul>
         </li>
 
+        <li><a href="bookings.php"><i class="fas fa-shopping-cart" style="color: #e67e22;"></i> <span>All
+                    Bookings</span></a>
+        </li>
+
+        <li><a href="partners.php"><i class="fas fa-shopping-cart" style="color: #e67e22;"></i> <span>All
+                    Partners</span></a>
+        </li>
+
         <li>
             <a class="has-arrow" href="#"><i class="fas fa-layer-group" style="color: #2ecc71;"></i>
                 <span>Categories</span></a>

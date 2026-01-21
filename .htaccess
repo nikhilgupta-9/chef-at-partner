@@ -10,6 +10,9 @@ RewriteRule ^blogs/?$ blog.php [L,QSA]
 RewriteRule ^privacy-policy/?$ privacy-policy.php [L,QSA]
 RewriteRule ^terms-and-conditions/?$ terms-and-conditions.php [L,QSA]
 
+# chef booking page 
+RewriteRule ^book-a-chef/([a-zA-Z0-9-]+)/?$ chef-details.php?alias=$1 [L,QSA]
+
 RewriteRule ^category/([a-zA-Z0-9-]+)/?$ category.php?alias=$1 [L,QSA]
 RewriteRule ^sub-category/([a-zA-Z0-9-]+)/?$ sub-category.php?alias=$1 [L,QSA]
 
