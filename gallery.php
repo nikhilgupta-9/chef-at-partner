@@ -1,4 +1,9 @@
-<?php include_once('conn/config.php') ?>
+<?php
+include_once(__DIR__ . '/config/connect.php');
+include_once(__DIR__ . '/util/function.php');
+
+$gallery = get_gallery();
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -6,16 +11,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>CHEF AT PARTNER</title>
-
-    <!-- <link rel="stylesheet" href="css/pe-icon-7-stroke.css" type="text/css" media="all" /> -->
+    <title>Gallery | CHEF AT PARTNER</title>
     <?php include_once 'links.php' ?>
 
 
 </head>
-
-
-
 
 <body class="home page-template-default page page-id-3699 wpb-js-composer js-comp-ver-5.2.1 vc_responsive">
 
@@ -53,19 +53,11 @@
                                         <div
                                             class="mgt-header-block clearfix text-center text-black wpb_animate_when_almost_visible wpb_fadeInDown fadeInDown wpb_content_element mgt-header-block-style-2 mgt-header-block-fontsize-medium mgt-header-texttransform-none mgt-header-block-43612531">
                                             <p class="mgt-header-block-subtitle">Gallery</p>
-                                            <h2 class="mgt-header-block-title text-font-weight-default">Moments We Create</h2>
+                                            <h2 class="mgt-header-block-title text-font-weight-default">Moments We
+                                                Create</h2>
                                             <div class="mgt-header-line mgt-header-line-margin-large"></div>
                                         </div>
-                                        <div
-                                            class="wpb_text_column wpb_content_element wpb_animate_when_almost_visible wpb_fadeInDown fadeInDown text-size-medium">
-                                            <div class="wpb_wrapper">
-                                                <p style="text-align: center;">
-                                                    <span class="text-color">
-                                                        Our gallery captures the essence of what we do best — bringing people together through exceptional food and professional service. From intimate house parties to large celebrations, each image reflects the dedication, skill, and passion of our chefs, bartenders, waiters, and event staff. Every moment you see here represents carefully prepared dishes, well-managed events, and unforgettable experiences created for our clients.
-                                                    </span>
-                                                </p>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -78,75 +70,18 @@
 
                         <div class="gallery-grid" id="chefGallery">
 
-                            <div class="gallery-item">
-                                <img src="upload/food-plate.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
+                            <?php
+                            foreach ($gallery as $g) {
+                                ?>
+                                <div class="gallery-item">
+                                    <img src="<?= $site . $g ?>" alt="Gallery Image">
+                                    <span class="view-icon">
+                                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                                    </span>
+                                </div>
+                            <?php } ?>
 
-                            <div class="gallery-item">
-                                <img src="upload/mussels-blacktable.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
 
-                            <div class="gallery-item">
-                                <img src="upload/brooke-lark.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/salad-wine.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/glass-orange-coctail-1.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/restaurant-table.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/desert-apple.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/barmen-coctail.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/pumpkin-soup.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="upload/salad.jpg" alt="Gallery Image">
-                                <span class="view-icon">
-                                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
-                                </span>
-                            </div>
 
                         </div>
 

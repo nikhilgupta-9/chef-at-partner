@@ -102,8 +102,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a href="forgot-password.php" class="auth-link">Forgot Password?</a>
                         <p class="mt-2">
                             Don't have an account?
-                            <a href="<?= $BASE_URL ?>signup.php" class="auth-link">Sign Up as Customer</a> |
-                            <a href="<?= $BASE_URL ?>partner/partner-register.php" class="auth-link">Become a
+                            <a href="<?= $BASE_URL ?>signup.php" class="auth-link text-primary">Sign Up as Customer</a>
+                            |
+                            <a href="<?= $BASE_URL ?>partner/partner-register.php" class="auth-link text-primary">Become
+                                a
                                 Partner</a>
                         </p>
                     </div>

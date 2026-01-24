@@ -159,19 +159,19 @@ $products = fetch_product_page();
                                         Expert service with professional standards. Book now for the best experience.
                                     </p>
                                 </div>
-
                                 <div class="card-footer d-flex justify-content-between align-items-center">
-                                    <?php if ($discount > 0): ?>
+                                    <?php if (!empty($discount) && $discount > 0): ?>
                                         <small class="text-muted">
-                                            <del>₹<?= $product['mrp'] ?></del>
+                                            <del>₹<?= htmlspecialchars($product['mrp']) ?></del>
                                         </small>
-                                    <?php else: ?>
-                                        <span></span>
                                     <?php endif; ?>
-                                    <a href="<?= $BASE_URL ?>book-service/<?= $product['product_slug'] ?>" class="btn btn-book">
+
+                                    <a href="<?= $BASE_URL ?>booking.php?chef-booking=<?= urlencode($product['slug_url']) ?>"
+                                        class="btn btn-book">
                                         Book Now
                                     </a>
                                 </div>
+
                             </div>
                         </div>
                         <?php

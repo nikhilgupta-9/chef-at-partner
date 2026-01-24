@@ -34,11 +34,11 @@ $contact = contact_us();
                         <h2 class="widgettitle">Company</h2>
                         <div class="menu-footermenu-1-container">
                             <ul id="menu-footermenu-1" class="menu">
-                                <li class="menu-item"><a href="<?php $BASE_URL ?>">Home</a></li>
-                                <li class="menu-item"><a href="gallery.php">Gallery</a></li>
-                                <li class="menu-item"><a href="services.php">Services</a></li>
-                                <li class="menu-item"><a href="contact-us.php">Contact Us</a></li>
-                                <li class="menu-item"><a href="booking.php">Bookings</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>">Home</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>gallery.php">Gallery</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>services.php">Services</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>contact-us.php">Contact Us</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>booking.php">Bookings</a></li>
                             </ul>
                         </div>
                     </li>
@@ -46,11 +46,14 @@ $contact = contact_us();
                         <h2 class="widgettitle">For Customer</h2>
                         <div class="menu-footermenu-1-container">
                             <ul id="menu-footermenu-1" class="menu">
-                                <li class="menu-item"><a href="signup.php">Sign up / Login</a></li>
-                                <li class="menu-item"><a href="about-us.php">About Us</a></li>
-                                <li class="menu-item"><a href="term-and-conditions.php">Term & Conditions</a></li>
-                                <li class="menu-item"><a href="privacy-policy.php">Privacy Policy</a></li>
-                                <li class="menu-item"><a href="cancellation-policy.php">Cancellation Policy</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>signup.php">Sign up / Login</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>about-us.php">About Us</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>term-and-conditions.php">Term &
+                                        Conditions</a></li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>privacy-policy.php">Privacy Policy</a>
+                                </li>
+                                <li class="menu-item"><a href="<?= $BASE_URL ?>cancellation-policy.php">Cancellation
+                                        Policy</a></li>
                                 <!-- <li class="menu-item"><a href="#">Gift Vouchers</a></li> -->
                             </ul>
                         </div>
@@ -208,90 +211,7 @@ $contact = contact_us();
     </div>
 </div>
 
-<!-- MOBILE SIDEBAR -->
 
-
-
-<div class="modal fade" id="chooseServiceModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-
-            <!-- Header -->
-            <div class="modal-header">
-                <button type="button" class="btn btn-link p-0 me-2" data-bs-dismiss="modal">
-                    <i class="fa fa-arrow-left"></i>
-                </button>
-                <h5 class="modal-title mx-auto">Choose Service</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-                <div class="row g-4 text-center">
-
-                    <!-- Service Item -->
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/chef.svg" alt="">
-                            <p>Cooks & Chefs</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/bartender.svg" alt="">
-                            <p>Bartenders</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/waiter.svg" alt="">
-                            <p>Waiters</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/cleaner.svg" alt="">
-                            <p>Cleaners</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/ingredients.svg" alt="">
-                            <p>Ingredients Delivery</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/appliance.svg" alt="">
-                            <p>Appliances on Rent</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/crockery.svg" alt="">
-                            <p>Crockery on Rent</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="service-option">
-                            <img src="icons/decor.svg" alt="">
-                            <p>Party Decorator</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 <style>
     .service-option {
         background: #f6f6f6;
@@ -319,10 +239,10 @@ $contact = contact_us();
     }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- Correct order: -->
 <script src="<?= $BASE_URL ?>js/jquery.js"></script>
 <script src="<?= $BASE_URL ?>js/jquery-migrate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= $BASE_URL ?>js/plugins/responsive-lightbox/assets/nivo/nivo-lightbox.min.js"></script>
 <script>
     /* <![CDATA[ */

@@ -1,4 +1,7 @@
-<?php include_once('config/connect.php') ?>
+<?php
+
+include_once(__DIR__ . '/config/connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -191,7 +194,7 @@
                                         <div class="service-card h-100 p-2">
 
                                             <div class="service-img">
-                                                <a href="<?= $BASE_URL ?>">
+                                                <a href="<?= $site ?>book-a-chef/<?= $sub_c['slug_url'] ?>">
                                                     <img src="<?= $BASE_URL ?>admin/uploads/sub-category/<?= $sub_c['sub_cat_img'] ?>"
                                                         alt="<?= $sub_c['categories'] ?>">
                                                 </a>

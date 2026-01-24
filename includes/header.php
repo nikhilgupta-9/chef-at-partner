@@ -38,41 +38,41 @@ $ocassion = get_occasions();
                 </button>
             </div>
             <div class="cap-cta">
-                <a href="<?= $BASE_URL ?>signup.php">Sign Up</a>
+                <a href="<?= $BASE_URL ?>login.php">Sign In</a>
             </div>
         </div>
 
         <!-- DESKTOP MENU -->
-        <div class="mobile-main-menu-toggle" id="mobileMenuToggle">
-            <i class="fa fa-bars "></i>
-        </div>
-
-        <div class="mobile-sidebar" id="mobileSidebar">
-            <div class="mobile-sidebar-header">
-                <img src="<?= $BASE_URL . $header_logo ?>" alt="Logo">
-                <span id="closeSidebar">&times;</span>
+        <div class=" mobile-main-menu-toggle" id="mobileMenuToggle">
+                    <i class="fa fa-bars "></i>
             </div>
 
-            <ul class="mobile-menu">
-                <li><a href="<?= $BASE_URL ?>">Home</a></li>
-                <li><a href="<?= $BASE_URL ?>about-us.php">About</a></li>
-                <li><a href="<?= $BASE_URL ?>gallery.php">Gallery</a></li>
-                <li><a href="<?= $BASE_URL ?>services.php">Services</a></li>
-                <li><a href="<?= $BASE_URL ?>contact.php">Contact Us</a></li>
-                <li class="highlight"><a href="reservation.html">Reservation</a></li>
-            </ul>
+            <div class="mobile-sidebar" id="mobileSidebar">
+                <div class="mobile-sidebar-header">
+                    <img src="<?= $BASE_URL . $header_logo ?>" alt="Logo">
+                    <span id="closeSidebar">&times;</span>
+                </div>
 
-            <!-- LOGIN BUTTON -->
-            <div class="mobile-sidebar-login">
-                <a href="<?= $BASE_URL ?>login.php" class="mobile-login-btn">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
+                <ul class="mobile-menu">
+                    <li><a href="<?= $BASE_URL ?>">Home</a></li>
+                    <li><a href="<?= $BASE_URL ?>about-us.php">About</a></li>
+                    <li><a href="<?= $BASE_URL ?>gallery.php">Gallery</a></li>
+                    <li><a href="<?= $BASE_URL ?>services.php">Services</a></li>
+                    <li><a href="<?= $BASE_URL ?>contact.php">Contact Us</a></li>
+                    <li class="highlight"><a href="reservation.html">Reservation</a></li>
+                </ul>
+
+                <!-- LOGIN BUTTON -->
+                <div class="mobile-sidebar-login">
+                    <a href="<?= $BASE_URL ?>login.php" class="mobile-login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </div>
             </div>
+
+
+
         </div>
-
-
-
-    </div>
 </header>
 <!-- RIGHT SIDE FLOATING BUTTONS -->
 <!-- Floating Contact Buttons -->

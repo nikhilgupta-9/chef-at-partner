@@ -449,6 +449,7 @@ function fetch_product_page()
 
             p.pro_id,
             p.pro_name,
+            p.slug_url,
             p.mrp,
             p.selling_price,
             p.pro_img,
